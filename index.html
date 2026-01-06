@@ -1,0 +1,623 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { 
+  Terminal, 
+  BookOpen, 
+  Cpu, 
+  Network, 
+  Shield, 
+  Zap, 
+  Calendar, 
+  ChevronDown, 
+  ChevronUp,
+  Brain,
+  Code,
+  Layers,
+  User,
+  Clock,
+  MapPin,
+  Mail,
+  FileText,
+  FlaskConical,
+  Users,
+  Loader
+} from 'lucide-react';
+
+// --- Default Data (Fallback) ---
+// This is used if the fetch to syllabus.json fails (which happens in some preview environments)
+const DEFAULT_DATA = {
+  title: "Advanced LLMs",
+  subtitle: "Reasoning, Agents, and the Structure of Intelligence",
+  description: "A 14-week graduate seminar dissecting the frontier of artificial intelligence. Moving beyond the 'black box' to understand emergent behaviors, agentic architectures, and the mechanistic roots of reasoning.",
+  instructor: {
+    name: "Dr. Elena Vance",
+    role: "Lead Instructor",
+    bio: "Specializing in Neuro-symbolic AI and Agentic Systems. Formerly Research Scientist at DeepMind.",
+    office: "Gates Hall, Room 304",
+    hours: "Tue / Thu 2:00 PM - 4:00 PM",
+    email: "evance@university.edu",
+    image: "http://googleusercontent.com/image_collection/image_retrieval/1013393106725855114"
+  },
+  assignments: [
+    {
+      title: "Paper Critiques",
+      weight: "30%",
+      icon: "file",
+      desc: "Weekly 1-page analysis of assigned readings. Focus on methodology flaws and future directions, not just summarization."
+    },
+    {
+      title: "Final Project",
+      weight: "40%",
+      icon: "flask",
+      desc: "Novel research implementation or reproduction of a SOTA result. Groups of 2-3. Requires quantitative evaluation metrics."
+    },
+    {
+      title: "Participation",
+      weight: "30%",
+      icon: "users",
+      desc: "Active engagement in seminar discussions, leading one discussion session, and peer review of project proposals."
+    }
+  ],
+  logistics: {
+    prereqs: ["Deep Learning Foundations", "Natural Language Processing", "PyTorch/Python Proficiency"]
+  },
+  schedule: [
+    {
+      part: "Part I: Foundations & Architecture",
+      theme: "foundations",
+      weeks: [
+        {
+          week: 1,
+          topic: "The Transformer & Its Evolution",
+          desc: "Dissecting the architecture that ate the world. Positional embeddings, attention variants, and sparsity.",
+          readings: [
+            { title: "Attention Is All You Need", author: "Vaswani et al. (2017)", note: "The Foundation" },
+            { title: "RoFormer: Enhanced Transformer with Rotary Position Embedding", author: "Su et al. (2021)", note: "Standard for modern LLMs" },
+            { title: "Switch Transformers: Scaling to Trillion Parameter Models", author: "Fedus et al. (2021)", note: "Mixture of Experts intro" }
+          ]
+        },
+        {
+          week: 2,
+          topic: "Scaling Laws & Compute Optimality",
+          desc: "The physics of AI. Understanding the relationship between compute, data, and parameter count.",
+          readings: [
+            { title: "Scaling Laws for Neural Language Models", author: "Kaplan et al. (2020)", note: "The OpenAI Hypothesis" },
+            { title: "Training Compute-Optimal Large Language Models", author: "Hoffmann et al. (2022)", note: "The Chinchilla Paper" },
+            { title: "Emergent Abilities of Large Language Models", author: "Wei et al. (2022)", note: "Phase transitions in capability" }
+          ]
+        }
+      ]
+    },
+    {
+      part: "Part II: Evaluation & Measurement",
+      theme: "eval",
+      weeks: [
+        {
+          week: 3,
+          topic: "Benchmarks & 'LLM-as-a-Judge'",
+          desc: "Moving beyond perplexity. How do we measure intelligence without contamination?",
+          readings: [
+            { title: "Measuring Massive Multitask Language Understanding (MMLU)", author: "Hendrycks et al. (2021)" },
+            { title: "Holistic Evaluation of Language Models (HELM)", author: "Liang et al. (2022)" },
+            { title: "Judging LLM-as-a-Judge with MT-Bench", author: "Zheng et al. (2023)" },
+            { title: "On the Measure of Intelligence", author: "Chollet (2019)", note: "Critical Theory" }
+          ]
+        }
+      ]
+    },
+    {
+      part: "Part III: Reasoning",
+      theme: "reasoning",
+      weeks: [
+        {
+          week: 4,
+          topic: "Chain-of-Thought & Prompt Engineering",
+          desc: "Eliciting reasoning through intermediate computation steps.",
+          readings: [
+            { title: "Chain-of-Thought Prompting Elicits Reasoning", author: "Wei et al. (2022)" },
+            { title: "Self-Consistency Improves Chain of Thought", author: "Wang et al. (2022)" },
+            { title: "Large Language Models are Zero-Shot Reasoners", author: "Kojima et al. (2022)" }
+          ]
+        },
+        {
+          week: 5,
+          topic: "Advanced Reasoning Structures",
+          desc: "Non-linear exploration of solution spaces: Trees and Graphs.",
+          readings: [
+            { title: "Tree of Thoughts: Deliberate Problem Solving", author: "Yao et al. (2023)" },
+            { title: "Graph of Thoughts: Solving Elaborate Problems", author: "Besta et al. (2023)" }
+          ]
+        },
+        {
+          week: 6,
+          topic: "Self-Correction & Recursion",
+          desc: "Can models fix their own mistakes? The limits of verification.",
+          readings: [
+            { title: "Large Language Models Can Self-Improve", author: "Huang et al. (2022)" },
+            { title: "Self-Refine: Iterative Refinement with Self-Feedback", author: "Madaan et al. (2023)" },
+            { title: "Large Language Models Cannot Self-Correct Reasoning Yet", author: "Valmeekam et al. (2023)", note: "Counter-point" }
+          ]
+        },
+        {
+          week: 7,
+          topic: "The Mirage of Reasoning",
+          desc: "Critical analysis: Pattern matching vs. true logic.",
+          readings: [
+            { title: "Faith and Fate: Limits on Compositionality", author: "Dziri et al. (2023)" },
+            { title: "The Reversal Curse", author: "Berglund et al. (2023)" }
+          ]
+        }
+      ]
+    },
+    {
+      part: "Part IV: Agents & Tool Use",
+      theme: "agents",
+      weeks: [
+        {
+          week: 8,
+          topic: "Foundations of Agency (ReAct)",
+          desc: "From text-in/text-out to Observation-Thought-Action loops.",
+          readings: [
+            { title: "ReAct: Synergizing Reasoning and Acting", author: "Yao et al. (2022)" },
+            { title: "Toolformer: Models Can Teach Themselves Tools", author: "Schick et al. (2023)" },
+            { title: "Gorilla: Connected with Massive APIs", author: "Patil et al. (2023)" }
+          ]
+        },
+        {
+          week: 9,
+          topic: "Autonomous Agents & Memory",
+          desc: "Persisting state over time. The 'Smallville' architecture.",
+          readings: [
+            { title: "Generative Agents: Simulacra of Human Behavior", author: "Park et al. (2023)" },
+            { title: "Voyager: Open-Ended Embodied Agent", author: "Wang et al. (2023)" },
+            { title: "LLM Powered Autonomous Agents", author: "Lilian Weng (2023)", note: "Survey Blog" }
+          ]
+        },
+        {
+          week: 10,
+          topic: "Multi-Agent Systems",
+          desc: "Social behavior and collaboration between synthetic minds.",
+          readings: [
+            { title: "CAMEL: Communicative Agents", author: "Li et al. (2023)" },
+            { title: "ChatDev: Communicative Agents for Software Dev", author: "Qian et al. (2023)" }
+          ]
+        }
+      ]
+    },
+    {
+      part: "Part V: Structure of Intelligence",
+      theme: "structure",
+      weeks: [
+        {
+          week: 11,
+          topic: "Mechanistic Interpretability & Alignment",
+          desc: "Mapping the neural circuitry and steering behavior.",
+          readings: [
+            { title: "Training models to follow instructions (InstructGPT)", author: "Ouyang et al. (2022)" },
+            { title: "Direct Preference Optimization (DPO)", author: "Rafailov et al. (2023)" },
+            { title: "Toy Models of Superposition", author: "Elhage et al. (Anthropic)" }
+          ]
+        }
+      ]
+    },
+    {
+      part: "Part VI: Projects",
+      theme: "project",
+      weeks: [
+        {
+          week: 12,
+          topic: "Project Proposals & Critique",
+          desc: "Feasibility analysis and literature review.",
+          readings: [{ title: "Student Selected Literature", author: "N/A" }]
+        },
+        {
+          week: 13,
+          topic: "Implementation Lab",
+          desc: "Hackathon week. Focus on 'The Engineering of Reliability'.",
+          readings: [{ title: "No Assigned Reading", author: "-" }]
+        },
+        {
+          week: 14,
+          topic: "Final Presentations",
+          desc: "Conference-style presentations.",
+          readings: [{ title: "Final Reports Due", author: "-" }]
+        }
+      ]
+    }
+  ]
+};
+
+// --- Component: Particle Background ---
+const ParticleBackground = () => {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+    
+    const particles = [];
+    const particleCount = 40; 
+    
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.size = Math.random() * 2 + 1;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+      }
+      draw() {
+        ctx.fillStyle = 'rgba(100, 116, 139, 0.5)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+
+    const animate = () => {
+      ctx.clearRect(0, 0, width, height);
+      
+      // Draw connections
+      ctx.strokeStyle = 'rgba(100, 116, 139, 0.1)';
+      ctx.lineWidth = 1;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 150) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    const handleResize = () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return (
+    <canvas 
+      ref={canvasRef} 
+      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-40"
+    />
+  );
+};
+
+// --- Component: Week Card ---
+const WeekCard = ({ weekData, themeColor }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const getBorderColor = (theme) => {
+    switch(theme) {
+      case 'foundations': return 'border-blue-500/30 hover:border-blue-400';
+      case 'reasoning': return 'border-cyan-500/30 hover:border-cyan-400';
+      case 'agents': return 'border-purple-500/30 hover:border-purple-400';
+      case 'structure': return 'border-emerald-500/30 hover:border-emerald-400';
+      case 'project': return 'border-rose-500/30 hover:border-rose-400';
+      default: return 'border-slate-700 hover:border-slate-500';
+    }
+  };
+
+  const getIcon = (theme) => {
+    switch(theme) {
+      case 'foundations': return <Layers size={20} className="text-blue-400" />;
+      case 'reasoning': return <Brain size={20} className="text-cyan-400" />;
+      case 'agents': return <Code size={20} className="text-purple-400" />;
+      case 'structure': return <Shield size={20} className="text-emerald-400" />;
+      case 'project': return <Zap size={20} className="text-rose-400" />;
+      default: return <Terminal size={20} className="text-slate-400" />;
+    }
+  };
+
+  return (
+    <div 
+      className={`relative mb-4 group transition-all duration-300 ${isOpen ? 'z-10' : 'z-0'}`}
+    >
+      <div 
+        onClick={() => setIsOpen(!isOpen)}
+        className={`
+          cursor-pointer backdrop-blur-sm bg-slate-900/60 border 
+          ${getBorderColor(weekData.theme)}
+          rounded-xl p-5 transition-all duration-300 shadow-lg
+          ${isOpen ? 'ring-1 ring-white/10' : ''}
+        `}
+      >
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className={`
+              w-12 h-12 rounded-lg flex items-center justify-center 
+              bg-slate-800/50 border border-slate-700/50
+              group-hover:scale-105 transition-transform
+            `}>
+              <span className="font-mono text-lg font-bold text-slate-200">
+                {weekData.week < 10 ? `0${weekData.week}` : weekData.week}
+              </span>
+            </div>
+            <div>
+              <h3 className="font-bold text-lg text-slate-100 group-hover:text-white transition-colors">
+                {weekData.topic}
+              </h3>
+              <div className="flex items-center gap-2 text-sm text-slate-400 mt-1">
+                {getIcon(weekData.theme)}
+                <span>{weekData.desc}</span>
+              </div>
+            </div>
+          </div>
+          <div className="text-slate-500 group-hover:text-slate-300 transition-colors">
+            {isOpen ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+          </div>
+        </div>
+
+        {/* Expandable Content */}
+        <div 
+          className={`
+            grid transition-all duration-300 ease-in-out
+            ${isOpen ? 'grid-rows-[1fr] opacity-100 mt-6 pt-6 border-t border-slate-700/50' : 'grid-rows-[0fr] opacity-0'}
+          `}
+        >
+          <div className="overflow-hidden">
+            <h4 className="text-xs font-mono uppercase tracking-widest text-slate-500 mb-3 flex items-center gap-2">
+              <BookOpen size={14} /> Required Readings
+            </h4>
+            <ul className="space-y-3">
+              {weekData.readings.map((paper, idx) => (
+                <li key={idx} className="flex items-start gap-3 text-slate-300 hover:text-white transition-colors p-2 rounded hover:bg-white/5">
+                  <div className="w-1.5 h-1.5 rounded-full bg-slate-600 mt-2.5 shrink-0" />
+                  <div>
+                    <span className="font-semibold block">{paper.title}</span>
+                    <span className="text-sm text-slate-500 font-mono">{paper.author}</span>
+                    {paper.note && (
+                      <span className="ml-2 text-xs py-0.5 px-2 rounded-full bg-slate-800 text-slate-400 border border-slate-700">
+                        {paper.note}
+                      </span>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- Component: Assignment Card ---
+const AssignmentCard = ({ data }) => {
+  const getIcon = (type) => {
+    switch(type) {
+      case 'file': return <FileText size={24} className="text-blue-400" />;
+      case 'flask': return <FlaskConical size={24} className="text-purple-400" />;
+      case 'users': return <Users size={24} className="text-emerald-400" />;
+      default: return <Terminal size={24} className="text-slate-400" />;
+    }
+  };
+
+  return (
+    <div className="bg-slate-900/40 backdrop-blur border border-slate-800 p-6 rounded-2xl flex flex-col h-full hover:border-slate-600 transition-colors">
+      <div className="flex items-start justify-between mb-4">
+        <div className="p-3 rounded-lg bg-slate-800/50 border border-slate-700/50">
+          {getIcon(data.icon)}
+        </div>
+        <span className="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-200 font-bold text-sm">
+          {data.weight}
+        </span>
+      </div>
+      <h3 className="text-lg font-bold text-slate-200 mb-2">{data.title}</h3>
+      <p className="text-slate-400 text-sm leading-relaxed">{data.desc}</p>
+    </div>
+  );
+};
+
+// --- Main App Component ---
+export default function SyllabusApp() {
+  const [courseData, setCourseData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [usingFallback, setUsingFallback] = useState(false);
+
+  useEffect(() => {
+    // Attempt to fetch data from JSON file
+    const fetchData = async () => {
+      try {
+        const response = await fetch('./syllabus.json');
+        if (!response.ok) throw new Error("File not found or network error");
+        const data = await response.json();
+        setCourseData(data);
+        setLoading(false);
+      } catch (err) {
+        console.warn("Failed to load syllabus.json (expected in preview environments). Using fallback data.", err);
+        setCourseData(DEFAULT_DATA);
+        setUsingFallback(true);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center text-cyan-500">
+        <Loader className="animate-spin" size={48} />
+      </div>
+    );
+  }
+
+  // Fallback to default if somehow null
+  const data = courseData || DEFAULT_DATA;
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-200 font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
+      <ParticleBackground />
+
+      {/* Main Content Container */}
+      <div className="relative z-10 max-w-5xl mx-auto px-6 py-12">
+        
+        {/* Header Section */}
+        <header className="mb-16 space-y-6 text-center md:text-left">
+          <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-4">
+             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/30 border border-cyan-500/30 text-cyan-400 text-xs font-mono uppercase tracking-widest">
+              <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
+              CS 294-X • Graduate Seminar
+            </div>
+            {usingFallback && (
+               <div className="text-xs text-slate-600 font-mono border border-slate-800 rounded px-2 py-1">
+                 Using default data (Simulated Fetch)
+               </div>
+            )}
+          </div>
+          
+          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-slate-100 via-slate-300 to-slate-500 pb-2">
+            {data.title}
+          </h1>
+          
+          <p className="text-2xl md:text-3xl font-light text-slate-400 max-w-3xl leading-tight">
+            {data.subtitle}
+          </p>
+
+          <p className="text-lg text-slate-500 max-w-2xl">
+            {data.description}
+          </p>
+        </header>
+
+        {/* Instructor Information */}
+        <section className="mb-16">
+          <div className="bg-slate-900/60 backdrop-blur border border-slate-700/50 rounded-2xl p-8 shadow-xl overflow-hidden relative">
+            <div className="absolute top-0 right-0 p-32 bg-cyan-500/10 blur-3xl rounded-full -mr-16 -mt-16 pointer-events-none" />
+            
+            <div className="flex flex-col md:flex-row items-center gap-8 relative z-10">
+              <div className="shrink-0 relative">
+                <div className="w-32 h-32 rounded-full p-1 bg-gradient-to-tr from-cyan-500 to-purple-500">
+                  <img 
+                    src={data.instructor.image} 
+                    alt={data.instructor.name}
+                    className="w-full h-full rounded-full object-cover border-4 border-slate-900"
+                  />
+                </div>
+              </div>
+              
+              <div className="text-center md:text-left flex-grow">
+                <h2 className="text-2xl font-bold text-white mb-1">{data.instructor.name}</h2>
+                <p className="text-cyan-400 font-mono text-sm uppercase tracking-wider mb-3">{data.instructor.role}</p>
+                <p className="text-slate-300 mb-6 max-w-2xl">{data.instructor.bio}</p>
+                
+                <div className="flex flex-wrap justify-center md:justify-start gap-4 md:gap-8 text-sm text-slate-400">
+                  <div className="flex items-center gap-2">
+                    <MapPin size={16} className="text-slate-500" />
+                    {data.instructor.office}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Clock size={16} className="text-slate-500" />
+                    {data.instructor.hours}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Mail size={16} className="text-slate-500" />
+                    {data.instructor.email}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Logistics Grid (Prerequisites) */}
+        <div className="mb-16">
+           <div className="bg-slate-900/40 backdrop-blur border border-slate-800 p-6 rounded-2xl">
+            <h3 className="text-slate-200 font-bold flex items-center gap-2 mb-4">
+              <Terminal size={18} /> Prerequisites
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {data.logistics.prereqs.map((req, i) => (
+                <span key={i} className="px-3 py-1 rounded bg-slate-800 text-slate-300 text-sm border border-slate-700">
+                  {req}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Assignment Descriptions */}
+        <section className="mb-16">
+           <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-slate-200 flex items-center gap-3">
+              <span className="w-8 h-1 bg-purple-500 rounded-full" />
+              Course Assessment
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {data.assignments.map((assignment, idx) => (
+              <AssignmentCard key={idx} data={assignment} />
+            ))}
+          </div>
+        </section>
+
+        {/* Schedule Section */}
+        <main>
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl font-bold text-slate-200 flex items-center gap-3">
+              <span className="w-8 h-1 bg-cyan-500 rounded-full" />
+              Weekly Schedule
+            </h2>
+            <div className="text-sm text-slate-500 font-mono hidden md:block">
+              // Click cards to view papers
+            </div>
+          </div>
+
+          <div className="space-y-12">
+            {data.schedule.map((section, idx) => (
+              <div key={idx} className="relative">
+                {/* Section Connector Line */}
+                <div className="absolute left-6 top-8 bottom-0 w-px bg-slate-800 -z-10" />
+                
+                <h3 className="text-sm font-mono uppercase tracking-widest text-slate-500 mb-6 pl-14">
+                  {section.part}
+                </h3>
+                
+                <div className="space-y-4">
+                  {section.weeks.map((week) => (
+                    <WeekCard 
+                      key={week.week} 
+                      weekData={{...week, theme: section.theme}} 
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </main>
+
+        {/* Footer */}
+        <footer className="mt-24 pt-12 border-t border-slate-800 text-center text-slate-600 text-sm">
+          <p>© 2024 Advanced Machine Learning Seminar</p>
+          <p className="mt-2 font-mono">Department of Computer Science</p>
+        </footer>
+
+      </div>
+    </div>
+  );
+}

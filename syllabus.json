@@ -1,0 +1,201 @@
+{
+  "title": "Advanced LLMs",
+  "subtitle": "Reasoning, Agents, and the Structure of Intelligence",
+  "description": "A 14-week graduate seminar dissecting the frontier of artificial intelligence. Moving beyond the 'black box' to understand emergent behaviors, agentic architectures, and the mechanistic roots of reasoning.",
+  "instructor": {
+    "name": "Dr. Elena Vance",
+    "role": "Lead Instructor",
+    "bio": "Specializing in Neuro-symbolic AI and Agentic Systems. Formerly Research Scientist at DeepMind.",
+    "office": "Gates Hall, Room 304",
+    "hours": "Tue / Thu 2:00 PM - 4:00 PM",
+    "email": "evance@university.edu",
+    "image": "http://googleusercontent.com/image_collection/image_retrieval/1013393106725855114"
+  },
+  "assignments": [
+    {
+      "title": "Paper Critiques",
+      "weight": "30%",
+      "icon": "file",
+      "desc": "Weekly 1-page analysis of assigned readings. Focus on methodology flaws and future directions, not just summarization."
+    },
+    {
+      "title": "Final Project",
+      "weight": "40%",
+      "icon": "flask",
+      "desc": "Novel research implementation or reproduction of a SOTA result. Groups of 2-3. Requires quantitative evaluation metrics."
+    },
+    {
+      "title": "Participation",
+      "weight": "30%",
+      "icon": "users",
+      "desc": "Active engagement in seminar discussions, leading one discussion session, and peer review of project proposals."
+    }
+  ],
+  "logistics": {
+    "prereqs": ["Deep Learning Foundations", "Natural Language Processing", "PyTorch/Python Proficiency"]
+  },
+  "schedule": [
+    {
+      "part": "Part I: Foundations & Architecture",
+      "theme": "foundations",
+      "weeks": [
+        {
+          "week": 1,
+          "topic": "The Transformer & Its Evolution",
+          "desc": "Dissecting the architecture that ate the world. Positional embeddings, attention variants, and sparsity.",
+          "readings": [
+            { "title": "Attention Is All You Need", "author": "Vaswani et al. (2017)", "note": "The Foundation" },
+            { "title": "RoFormer: Enhanced Transformer with Rotary Position Embedding", "author": "Su et al. (2021)", "note": "Standard for modern LLMs" },
+            { "title": "Switch Transformers: Scaling to Trillion Parameter Models", "author": "Fedus et al. (2021)", "note": "Mixture of Experts intro" }
+          ]
+        },
+        {
+          "week": 2,
+          "topic": "Scaling Laws & Compute Optimality",
+          "desc": "The physics of AI. Understanding the relationship between compute, data, and parameter count.",
+          "readings": [
+            { "title": "Scaling Laws for Neural Language Models", "author": "Kaplan et al. (2020)", "note": "The OpenAI Hypothesis" },
+            { "title": "Training Compute-Optimal Large Language Models", "author": "Hoffmann et al. (2022)", "note": "The Chinchilla Paper" },
+            { "title": "Emergent Abilities of Large Language Models", "author": "Wei et al. (2022)", "note": "Phase transitions in capability" }
+          ]
+        }
+      ]
+    },
+    {
+      "part": "Part II: Evaluation & Measurement",
+      "theme": "eval",
+      "weeks": [
+        {
+          "week": 3,
+          "topic": "Benchmarks & 'LLM-as-a-Judge'",
+          "desc": "Moving beyond perplexity. How do we measure intelligence without contamination.",
+          "readings": [
+            { "title": "Measuring Massive Multitask Language Understanding (MMLU)", "author": "Hendrycks et al. (2021)" },
+            { "title": "Holistic Evaluation of Language Models (HELM)", "author": "Liang et al. (2022)" },
+            { "title": "Judging LLM-as-a-Judge with MT-Bench", "author": "Zheng et al. (2023)" },
+            { "title": "On the Measure of Intelligence", "author": "Chollet (2019)", "note": "Critical Theory" }
+          ]
+        }
+      ]
+    },
+    {
+      "part": "Part III: Reasoning",
+      "theme": "reasoning",
+      "weeks": [
+        {
+          "week": 4,
+          "topic": "Chain-of-Thought & Prompt Engineering",
+          "desc": "Eliciting reasoning through intermediate computation steps.",
+          "readings": [
+            { "title": "Chain-of-Thought Prompting Elicits Reasoning", "author": "Wei et al. (2022)" },
+            { "title": "Self-Consistency Improves Chain of Thought", "author": "Wang et al. (2022)" },
+            { "title": "Large Language Models are Zero-Shot Reasoners", "author": "Kojima et al. (2022)" }
+          ]
+        },
+        {
+          "week": 5,
+          "topic": "Advanced Reasoning Structures",
+          "desc": "Non-linear exploration of solution spaces: Trees and Graphs.",
+          "readings": [
+            { "title": "Tree of Thoughts: Deliberate Problem Solving", "author": "Yao et al. (2023)" },
+            { "title": "Graph of Thoughts: Solving Elaborate Problems", "author": "Besta et al. (2023)" }
+          ]
+        },
+        {
+          "week": 6,
+          "topic": "Self-Correction & Recursion",
+          "desc": "Can models fix their own mistakes? The limits of verification.",
+          "readings": [
+            { "title": "Large Language Models Can Self-Improve", "author": "Huang et al. (2022)" },
+            { "title": "Self-Refine: Iterative Refinement with Self-Feedback", "author": "Madaan et al. (2023)" },
+            { "title": "Large Language Models Cannot Self-Correct Reasoning Yet", "author": "Valmeekam et al. (2023)", "note": "Counter-point" }
+          ]
+        },
+        {
+          "week": 7,
+          "topic": "The Mirage of Reasoning",
+          "desc": "Critical analysis: Pattern matching vs. true logic.",
+          "readings": [
+            { "title": "Faith and Fate: Limits on Compositionality", "author": "Dziri et al. (2023)" },
+            { "title": "The Reversal Curse", "author": "Berglund et al. (2023)" }
+          ]
+        }
+      ]
+    },
+    {
+      "part": "Part IV: Agents & Tool Use",
+      "theme": "agents",
+      "weeks": [
+        {
+          "week": 8,
+          "topic": "Foundations of Agency (ReAct)",
+          "desc": "From text-in/text-out to Observation-Thought-Action loops.",
+          "readings": [
+            { "title": "ReAct: Synergizing Reasoning and Acting", "author": "Yao et al. (2022)" },
+            { "title": "Toolformer: Models Can Teach Themselves Tools", "author": "Schick et al. (2023)" },
+            { "title": "Gorilla: Connected with Massive APIs", "author": "Patil et al. (2023)" }
+          ]
+        },
+        {
+          "week": 9,
+          "topic": "Autonomous Agents & Memory",
+          "desc": "Persisting state over time. The 'Smallville' architecture.",
+          "readings": [
+            { "title": "Generative Agents: Simulacra of Human Behavior", "author": "Park et al. (2023)" },
+            { "title": "Voyager: Open-Ended Embodied Agent", "author": "Wang et al. (2023)" },
+            { "title": "LLM Powered Autonomous Agents", "author": "Lilian Weng (2023)", "note": "Survey Blog" }
+          ]
+        },
+        {
+          "week": 10,
+          "topic": "Multi-Agent Systems",
+          "desc": "Social behavior and collaboration between synthetic minds.",
+          "readings": [
+            { "title": "CAMEL: Communicative Agents", "author": "Li et al. (2023)" },
+            { "title": "ChatDev: Communicative Agents for Software Dev", "author": "Qian et al. (2023)" }
+          ]
+        }
+      ]
+    },
+    {
+      "part": "Part V: Structure of Intelligence",
+      "theme": "structure",
+      "weeks": [
+        {
+          "week": 11,
+          "topic": "Mechanistic Interpretability & Alignment",
+          "desc": "Mapping the neural circuitry and steering behavior.",
+          "readings": [
+            { "title": "Training models to follow instructions (InstructGPT)", "author": "Ouyang et al. (2022)" },
+            { "title": "Direct Preference Optimization (DPO)", "author": "Rafailov et al. (2023)" },
+            { "title": "Toy Models of Superposition", "author": "Elhage et al. (Anthropic)" }
+          ]
+        }
+      ]
+    },
+    {
+      "part": "Part VI: Projects",
+      "theme": "project",
+      "weeks": [
+        {
+          "week": 12,
+          "topic": "Project Proposals & Critique",
+          "desc": "Feasibility analysis and literature review.",
+          "readings": [{ "title": "Student Selected Literature", "author": "N/A" }]
+        },
+        {
+          "week": 13,
+          "topic": "Implementation Lab",
+          "desc": "Hackathon week. Focus on 'The Engineering of Reliability'.",
+          "readings": [{ "title": "No Assigned Reading", "author": "-" }]
+        },
+        {
+          "week": 14,
+          "topic": "Final Presentations",
+          "desc": "Conference-style presentations.",
+          "readings": [{ "title": "Final Reports Due", "author": "-" }]
+        }
+      ]
+    }
+  ]
+}
