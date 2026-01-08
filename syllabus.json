@@ -3,13 +3,13 @@
   "subtitle": "Reasoning, Agents, and the Structure of Intelligence",
   "description": "A 14-week graduate seminar dissecting the frontier of artificial intelligence. Moving beyond the 'black box' to understand emergent behaviors, agentic architectures, and the mechanistic roots of reasoning.",
   "instructor": {
-    "name": "Dr. Elena Vance",
-    "role": "Lead Instructor",
-    "bio": "Specializing in Neuro-symbolic AI and Agentic Systems. Formerly Research Scientist at DeepMind.",
-    "office": "Gates Hall, Room 304",
+    "name": "Dr. Amir Sadovnik",
+    "role": "Instructor",
+    "bio": "Dr. Sadovnik is the Research Lead for the newly established Center for AI Security Research (CAISER) at Oak Ridge National Lab. As part of this role, Dr. Sadovnik leads multiple research projects related to AI risk, adversarial AI, and large language model vulnerabilities.",
+    "office": "Min Kao Building, Room 607",
     "hours": "Tue / Thu 2:00 PM - 4:00 PM",
-    "email": "evance@university.edu",
-    "image": "http://googleusercontent.com/image_collection/image_retrieval/1013393106725855114"
+    "email": "asadovnik@utk.edu",
+    "image": "https://www.ornl.gov/sites/default/files/styles/staff_profile_image_style/public/2023-09/2023-P00821_0.jpg"
   },
   "assignments": [
     {
