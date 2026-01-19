@@ -63,6 +63,9 @@
         <!-- Instructor Section (Populated by JS) -->
         <section id="instructor-section" class="mb-16"></section>
 
+        <!-- NEW: Learning Outcomes Section -->
+        <section id="outcomes-section" class="mb-16"></section>
+
         <!-- Prerequisites (Populated by JS) -->
         <div id="prereqs-section" class="mb-16"></div>
 
@@ -84,6 +87,9 @@
             <!-- Schedule Container (Populated by JS) -->
             <div id="schedule-container" class="space-y-12"></div>
         </main>
+
+        <!-- NEW: Policies Grid (Submission, Environment, Additional) -->
+        <section id="policies-section" class="mb-16"></section>
 
         <footer class="mt-24 pt-12 border-t border-slate-800 text-center text-slate-600 text-sm">
             <p>© 2024 Advanced Machine Learning Seminar</p>
@@ -205,6 +211,29 @@
             `;
         }
 
+        function renderOutcomes(data) {
+            const section = document.getElementById('outcomes-section');
+            if (!data.learningOutcomes) return;
+
+            const items = data.learningOutcomes.map(item => `
+                <li class="flex items-start gap-3">
+                    <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
+                    <span class="text-slate-300">${item}</span>
+                </li>
+            `).join('');
+
+            section.innerHTML = `
+                <div class="glass-panel border-slate-800 p-8 rounded-2xl">
+                    <h3 class="text-xl font-bold text-slate-200 mb-6 flex items-center gap-2">
+                        <i data-lucide="target" class="w-5 h-5 text-cyan-400"></i> Learning Outcomes
+                    </h3>
+                    <ul class="grid md:grid-cols-2 gap-4">
+                        ${items}
+                    </ul>
+                </div>
+            `;
+        }
+
         function renderPrereqs(data) {
             const div = document.getElementById('prereqs-section');
             const pills = data.logistics.prereqs.map(req => 
@@ -243,6 +272,50 @@
                     </h2>
                 </div>
                 <div class="grid md:grid-cols-3 gap-6">${cards}</div>
+            `;
+        }
+
+        function renderPolicies(data) {
+            const section = document.getElementById('policies-section');
+            //console.log("got policies")
+            if (!data.policies) return;
+            console.log("got policies")
+            section.innerHTML = `
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Submission & Honesty -->
+                    <div class="glass-panel p-6 rounded-2xl">
+                        <h3 class="text-lg font-bold text-slate-200 mb-4 flex items-center gap-2">
+                            <i data-lucide="upload-cloud" class="w-5 h-5 text-emerald-400"></i> Submission & Honesty
+                        </h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-1">Projects</h4>
+                                <p class="text-slate-400 text-sm leading-relaxed">${data.policies.submission}</p>
+                            </div>
+                            <div class="pt-4 border-t border-slate-700/50">
+                                <h4 class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-1">Intellectual Integrity</h4>
+                                <p class="text-slate-400 text-sm leading-relaxed">${data.policies.honesty}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Environment & Additional -->
+                    <div class="glass-panel p-6 rounded-2xl">
+                         <h3 class="text-lg font-bold text-slate-200 mb-4 flex items-center gap-2">
+                            <i data-lucide="graduation-cap" class="w-5 h-5 text-rose-400"></i> Learning Environment
+                        </h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-1">Expectations</h4>
+                                <p class="text-slate-400 text-sm leading-relaxed">${data.policies.attendance}</p>
+                            </div>
+                            <div class="pt-4 border-t border-slate-700/50">
+                                <h4 class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-1">Important Info</h4>
+                                <p class="text-slate-400 text-sm leading-relaxed">${data.policies.additional}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             `;
         }
 
@@ -369,9 +442,11 @@
 
             renderHeader(courseData);
             renderInstructor(courseData);
+            renderOutcomes(courseData); // New
             renderPrereqs(courseData);
             renderAssignments(courseData);
             renderSchedule(courseData);
+            renderPolicies(courseData); // New
             
             // Initialize Lucide Icons
             lucide.createIcons();

@@ -11,6 +11,18 @@
     "email": "asadovnik@utk.edu",
     "image": "https://www.ornl.gov/sites/default/files/styles/staff_profile_image_style/public/2023-09/2023-P00821_0.jpg"
   },
+  "learningOutcomes": [
+    "Deconstruct modern Transformer architectures, attention mechanisms, and efficient inference techniques (MoE, Kv-Cache).",
+    "Design and evaluate autonomous agentic systems using frameworks like ReAct, Toolformer, and Voyager.",
+    "Critique state-of-the-art research on reasoning, hallucinations, and mechanistic interpretability.",
+    "Implement and benchmark large language models on novel tasks using rigorous evaluation protocols."
+  ],
+  "policies": {
+    "submission": "All code must be submitted via GitHub Classroom. Reports are due by 11:59 PM EST on the due date. Late submissions incur a 10% penalty per day.",
+    "honesty": "Students are encouraged to use LLMs (ChatGPT, Claude, etc.) as coding assistants, but must disclose their usage. Plagiarism of academic papers or other students' work will result in immediate failure.",
+    "attendance": "This is a seminar-style course. Active participation is required. Missing more than 2 classes without prior notice will impact your participation grade. Please read all assigned papers *before* class.",
+    "additional": "Drop Deadline: Feb 15 | Spring Break: Mar 10-17 | Final Exam Week: May 5-9. For campus-wide policies on disability accommodations and mental health resources, please visit university.edu/policies."
+  },
   "assignments": [
     {
       "title": "Quizes",
