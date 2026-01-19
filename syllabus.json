@@ -7,7 +7,7 @@
     "role": "Instructor",
     "bio": "Dr. Sadovnik is the Research Lead for the newly established Center for AI Security Research (CAISER) at Oak Ridge National Lab. As part of this role, Dr. Sadovnik leads multiple research projects related to AI risk, adversarial AI, and large language model vulnerabilities.",
     "office": "Min Kao Building, Room 607",
-    "hours": "Tue / Thu 2:00 PM - 4:00 PM",
+    "hours": "Monday 4:00-5:00",
     "email": "asadovnik@utk.edu",
     "image": "https://www.ornl.gov/sites/default/files/styles/staff_profile_image_style/public/2023-09/2023-P00821_0.jpg"
   },
@@ -41,7 +41,7 @@
       "title": "Homeworks",
       "weight": "20%",
       "icon": "users",
-      "desc": "On time and correct submission of assignments."
+      "desc": "On time and correct submission of assignments. All assignments will be posted on Canvas."
     }
   ],
   "logistics": {
@@ -54,21 +54,21 @@
       "weeks": [
         {
           "week": 1,
-          "topic": "1/26 The Transformer & Its Evolution",
-          "desc": "Dissecting the architecture that ate the world. Positional embeddings, attention variants, and sparsity.",
+          "topic": "1/26 Deep Learning Basics",
+          "desc": "Understanding the basics of artificial neural networks - the backbone of LLMS - including basic math.",
           "readings": [
-            { "title": "Attention Is All You Need", "author": "Vaswani et al. (2017)", "note": "The foundation", "url": "https://arxiv.org/abs/1706.03762"  },
-            { "title": "The Illustrated Transformer", "author": "Jay Alammar (2018)", "note": "A website with a good description of transformers", "url": "https://jalammar.github.io/illustrated-transformer/" }
+            { "title": "The Math Behind Neural Networks", "author": "Cristian Leo (2024)", "note": "A website with a brief overview of neural networks", "url": "https://towardsdatascience.com/the-math-behind-neural-networks-a34a51b93873/" }
           ]
         },
         {
           "week": 2,
-          "topic": " 2/2 Scaling Laws & Compute Optimality",
-          "desc": "The physics of AI. Understanding the relationship between compute, data, and parameter count.",
+          "topic": " 2/2 The Transformer and LLMs",
+          "desc": "A deeper dive into the transformer architecture and basics of LLM's.",
           "readings": [
-            { "title": "Scaling Laws for Neural Language Models", "author": "Kaplan et al. (2020)", "note": "The OpenAI Hypothesis" },
-            { "title": "Training Compute-Optimal Large Language Models", "author": "Hoffmann et al. (2022)", "note": "The Chinchilla Paper" },
-            { "title": "Emergent Abilities of Large Language Models", "author": "Wei et al. (2022)", "note": "Phase transitions in capability" }
+            { "title": "Attention Is All You Need", "author": "Vaswani et al. (2017)", "note": "The foundation", "url": "https://arxiv.org/abs/1706.03762"  },
+            { "title": "The Illustrated Transformer", "author": "Jay Alammar (2018)", "note": "A website with a good description of transformers", "url": "https://jalammar.github.io/illustrated-transformer/" },
+            { "title": "A Beginner’s Guide to Tokens, Vectors, and Embeddings in NLP", "author": "Sascha Metzger (2022)", "note": "A website with a overview of tokenization and embedding", "url": "https://medium.com/@saschametzger/what-are-tokens-vectors-and-embeddings-how-do-you-create-them-e2a3e698e037" }
+            
           ]
         }
       ]
