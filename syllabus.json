@@ -45,7 +45,7 @@
     }
   ],
   "logistics": {
-    "prereqs": ["Deep Learning Foundations", "Natural Language Processing", "PyTorch/Python Proficiency"]
+    "prereqs": ["Deep Learning Foundations", "Natural Language Processing", "Python Proficiency"]
   },
   "schedule": [
     {
