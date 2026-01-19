@@ -99,7 +99,7 @@
             subtitle: "Reasoning, Agents, and the Structure of Intelligence",
             description: "A 14-week graduate seminar dissecting the frontier of artificial intelligence. Moving beyond the 'black box' to understand emergent behaviors, agentic architectures, and the mechanistic roots of reasoning.",
             instructor: {
-                name: "Dr. Elena Vance",
+                name: "Dr. Elna Vance",
                 role: "Lead Instructor",
                 bio: "Specializing in Neuro-symbolic AI and Agentic Systems. Formerly Research Scientist at DeepMind.",
                 office: "Gates Hall, Room 304",
@@ -352,12 +352,19 @@
             try {
                 const response = await fetch('./syllabus.json');
                 if (response.ok) {
+                    console.log("got file")
                     const json = await response.json();
                     courseData = json;
                     console.log("Loaded data from syllabus.json");
                 }
             } catch (e) {
                 console.log("Could not load syllabus.json (likely running locally without server). Using fallback data.");
+                console.error("failed",e);
+                console.log("Inspecting the problematic string:");
+                const rawText=await 
+                console.log(potentialJsonString); // View the raw content
+                console.log("Type of variable:", typeof potentialJsonString); // Check the type
+                // Handle the error (e.g., set default values or alert the user)
             }
 
             renderHeader(courseData);

@@ -25,10 +25,10 @@
       "desc": "Novel research implementation or reproduction of a SOTA result. Groups of 2-3. Requires quantitative evaluation metrics."
     },
     {
-      "title": "Participation",
+      "title": "Homeworks",
       "weight": "30%",
       "icon": "users",
-      "desc": "Active engagement in seminar discussions, leading one discussion session, and peer review of project proposals."
+      "desc": "On time and correct submission of assignments."
     }
   ],
   "logistics": {
@@ -44,9 +44,8 @@
           "topic": "The Transformer & Its Evolution",
           "desc": "Dissecting the architecture that ate the world. Positional embeddings, attention variants, and sparsity.",
           "readings": [
-            { "title": "Attention Is All You Need", "author": "Vaswani et al. (2017)", "note": "The Foundation" },
-            { "title": "RoFormer: Enhanced Transformer with Rotary Position Embedding", "author": "Su et al. (2021)", "note": "Standard for modern LLMs" },
-            { "title": "Switch Transformers: Scaling to Trillion Parameter Models", "author": "Fedus et al. (2021)", "note": "Mixture of Experts intro" }
+            { "title": "Attention Is All You Need", "author": "Vaswani et al. (2017)", "note": "The foundation" },
+            { "title": "The Illustrated Transformer", "author": "Jay Alammar (2018)", "note": "A website with a good description of transformers" }
           ]
         },
         {
