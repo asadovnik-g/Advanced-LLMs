@@ -54,16 +54,16 @@
       "weeks": [
         {
           "week": 1,
-          "topic": "The Transformer & Its Evolution",
+          "topic": "1/26 The Transformer & Its Evolution",
           "desc": "Dissecting the architecture that ate the world. Positional embeddings, attention variants, and sparsity.",
           "readings": [
             { "title": "Attention Is All You Need", "author": "Vaswani et al. (2017)", "note": "The foundation", "url": "https://arxiv.org/abs/1706.03762"  },
-            { "title": "The Illustrated Transformer", "author": "Jay Alammar (2018)", "note": "A website with a good description of transformers" }
+            { "title": "The Illustrated Transformer", "author": "Jay Alammar (2018)", "note": "A website with a good description of transformers", "url": "https://jalammar.github.io/illustrated-transformer/" }
           ]
         },
         {
           "week": 2,
-          "topic": "Scaling Laws & Compute Optimality",
+          "topic": " 2/2 Scaling Laws & Compute Optimality",
           "desc": "The physics of AI. Understanding the relationship between compute, data, and parameter count.",
           "readings": [
             { "title": "Scaling Laws for Neural Language Models", "author": "Kaplan et al. (2020)", "note": "The OpenAI Hypothesis" },
@@ -79,7 +79,7 @@
       "weeks": [
         {
           "week": 3,
-          "topic": "Benchmarks & 'LLM-as-a-Judge'",
+          "topic": "2/9 Benchmarks & 'LLM-as-a-Judge'",
           "desc": "Moving beyond perplexity. How do we measure intelligence without contamination.",
           "readings": [
             { "title": "Measuring Massive Multitask Language Understanding (MMLU)", "author": "Hendrycks et al. (2021)" },
@@ -96,7 +96,7 @@
       "weeks": [
         {
           "week": 4,
-          "topic": "Chain-of-Thought & Prompt Engineering",
+          "topic": "2/16 Chain-of-Thought & Prompt Engineering",
           "desc": "Eliciting reasoning through intermediate computation steps.",
           "readings": [
             { "title": "Chain-of-Thought Prompting Elicits Reasoning", "author": "Wei et al. (2022)" },
@@ -106,7 +106,7 @@
         },
         {
           "week": 5,
-          "topic": "Advanced Reasoning Structures",
+          "topic": "2/23 Advanced Reasoning Structures",
           "desc": "Non-linear exploration of solution spaces: Trees and Graphs.",
           "readings": [
             { "title": "Tree of Thoughts: Deliberate Problem Solving", "author": "Yao et al. (2023)" },
@@ -115,7 +115,7 @@
         },
         {
           "week": 6,
-          "topic": "Self-Correction & Recursion",
+          "topic": "3/2 Self-Correction & Recursion",
           "desc": "Can models fix their own mistakes? The limits of verification.",
           "readings": [
             { "title": "Large Language Models Can Self-Improve", "author": "Huang et al. (2022)" },
@@ -125,7 +125,7 @@
         },
         {
           "week": 7,
-          "topic": "The Mirage of Reasoning",
+          "topic": "3/16 The Mirage of Reasoning",
           "desc": "Critical analysis: Pattern matching vs. true logic.",
           "readings": [
             { "title": "Faith and Fate: Limits on Compositionality", "author": "Dziri et al. (2023)" },
@@ -140,7 +140,7 @@
       "weeks": [
         {
           "week": 8,
-          "topic": "Foundations of Agency (ReAct)",
+          "topic": "3/23 Foundations of Agency (ReAct)",
           "desc": "From text-in/text-out to Observation-Thought-Action loops.",
           "readings": [
             { "title": "ReAct: Synergizing Reasoning and Acting", "author": "Yao et al. (2022)" },
@@ -150,7 +150,7 @@
         },
         {
           "week": 9,
-          "topic": "Autonomous Agents & Memory",
+          "topic": "3/30 Autonomous Agents & Memory",
           "desc": "Persisting state over time. The 'Smallville' architecture.",
           "readings": [
             { "title": "Generative Agents: Simulacra of Human Behavior", "author": "Park et al. (2023)" },
@@ -160,7 +160,7 @@
         },
         {
           "week": 10,
-          "topic": "Multi-Agent Systems",
+          "topic": "4/6 Multi-Agent Systems",
           "desc": "Social behavior and collaboration between synthetic minds.",
           "readings": [
             { "title": "CAMEL: Communicative Agents", "author": "Li et al. (2023)" },
@@ -175,7 +175,7 @@
       "weeks": [
         {
           "week": 11,
-          "topic": "Mechanistic Interpretability & Alignment",
+          "topic": "4/13 Mechanistic Interpretability & Alignment",
           "desc": "Mapping the neural circuitry and steering behavior.",
           "readings": [
             { "title": "Training models to follow instructions (InstructGPT)", "author": "Ouyang et al. (2022)" },
@@ -191,19 +191,19 @@
       "weeks": [
         {
           "week": 12,
-          "topic": "Project Proposals & Critique",
+          "topic": "4/20 Project Proposals & Critique",
           "desc": "Feasibility analysis and literature review.",
           "readings": [{ "title": "Student Selected Literature", "author": "N/A" }]
         },
         {
           "week": 13,
-          "topic": "Implementation Lab",
+          "topic": "4/27 Implementation Lab",
           "desc": "Hackathon week. Focus on 'The Engineering of Reliability'.",
           "readings": [{ "title": "No Assigned Reading", "author": "-" }]
         },
         {
           "week": 14,
-          "topic": "Final Presentations",
+          "topic": "5/4 Final Presentations",
           "desc": "Conference-style presentations.",
           "readings": [{ "title": "Final Reports Due", "author": "-" }]
         }
