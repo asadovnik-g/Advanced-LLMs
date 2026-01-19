@@ -1,7 +1,7 @@
 {
   "title": "Advanced LLMs",
   "subtitle": "Reasoning, Agents, and the Structure of Intelligence",
-  "description": "A 14-week graduate seminar dissecting the frontier of artificial intelligence. Moving beyond the 'black box' to understand emergent behaviors, agentic architectures, and the mechanistic roots of reasoning.",
+  "description": "An advanced course that will dig deepet into the current trends in LLM development including reasoning and agents, and provide better understanding of the strengths and limitations of current AI.",
   "instructor": {
     "name": "Dr. Amir Sadovnik",
     "role": "Instructor",
@@ -12,33 +12,34 @@
     "image": "https://www.ornl.gov/sites/default/files/styles/staff_profile_image_style/public/2023-09/2023-P00821_0.jpg"
   },
   "learningOutcomes": [
-    "Deconstruct modern Transformer architectures, attention mechanisms, and efficient inference techniques (MoE, Kv-Cache).",
-    "Design and evaluate autonomous agentic systems using frameworks like ReAct, Toolformer, and Voyager.",
-    "Critique state-of-the-art research on reasoning, hallucinations, and mechanistic interpretability.",
-    "Implement and benchmark large language models on novel tasks using rigorous evaluation protocols."
+    "Gain a deeper understanding of how LLMs operate including their strengths, limitations, and security risks.",
+    "Gain competence in using LLMs with common frameworks both locally and on the cloud",
+    "Understand the basics of LLM reasoning, hallucinations, and interpretability.",
+    "Understand and design LLM based autonomous agentic systems and using common frameworks.",
+    "Implement and benchmark LLMs on a novel task and right a academic level paper on you resutls."
   ],
   "policies": {
-    "submission": "All code must be submitted via GitHub Classroom. Reports are due by 11:59 PM EST on the due date. Late submissions incur a 10% penalty per day.",
-    "honesty": "Students are encouraged to use LLMs (ChatGPT, Claude, etc.) as coding assistants, but must disclose their usage. Plagiarism of academic papers or other students' work will result in immediate failure.",
-    "attendance": "This is a seminar-style course. Active participation is required. Missing more than 2 classes without prior notice will impact your participation grade. Please read all assigned papers *before* class.",
-    "additional": "Drop Deadline: Feb 15 | Spring Break: Mar 10-17 | Final Exam Week: May 5-9. For campus-wide policies on disability accommodations and mental health resources, please visit university.edu/policies."
+    "submission": "All work must be submitted via Canvas. These will usually be by 11:59 PM EST on the due date. Late submissions will not be accepted. While some assignments will be independent others will be done in groups",
+    "honesty": "Students are allowed to use LLMs (ChatGPT, Claude, etc.) as coding assistants, but must disclose their usage. Also, students must make sure they understand all code they have written. Plagiarism of academic papers or other students' work will result in immediate failure.",
+    "attendance": "This is a seminar-style course. Active participation is required. Attendance is expected. Please read all assigned papers *before* class.",
+    "additional": "Please make sure to find out the last day to drop/withdraw from the course if needed. For campus-wide policies on disability accommodations and mental health resources, please visit https://teaching.utk.edu/wp-content/uploads/sites/78/2026/01/Campus-Syllabus-Updated-1-8-26.2.docx"
   },
   "assignments": [
     {
-      "title": "Quizes",
-      "weight": "30%",
+      "title": "Quizes/Exam",
+      "weight": "20%",
       "icon": "file",
-      "desc": "Weekly 1-page analysis of assigned readings. Focus on methodology flaws and future directions, not just summarization."
+      "desc": "Every few classes we will start with a few questions that'll cover last week's class. We will probably have a longer one later in the semester as well."
     },
     {
       "title": "Final Project",
-      "weight": "40%",
-      "icon": "flask",
-      "desc": "Novel research implementation or reproduction of a SOTA result. Groups of 2-3. Requires quantitative evaluation metrics."
+      "weight": "60%",
+      "icon": "flask-conical",
+      "desc": "Novel research implementation or reproduction of a SOTA result. Groups of 3-4. Requires quantitative evaluation metrics."
     },
     {
       "title": "Homeworks",
-      "weight": "30%",
+      "weight": "20%",
       "icon": "users",
       "desc": "On time and correct submission of assignments."
     }
@@ -56,7 +57,7 @@
           "topic": "The Transformer & Its Evolution",
           "desc": "Dissecting the architecture that ate the world. Positional embeddings, attention variants, and sparsity.",
           "readings": [
-            { "title": "Attention Is All You Need", "author": "Vaswani et al. (2017)", "note": "The foundation" },
+            { "title": "Attention Is All You Need", "author": "Vaswani et al. (2017)", "note": "The foundation", "url": "https://arxiv.org/abs/1706.03762"  },
             { "title": "The Illustrated Transformer", "author": "Jay Alammar (2018)", "note": "A website with a good description of transformers" }
           ]
         },
