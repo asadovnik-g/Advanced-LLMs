@@ -82,10 +82,9 @@
           "topic": "2/9 Benchmarks & 'LLM-as-a-Judge'",
           "desc": "Moving beyond perplexity. How do we measure intelligence without contamination.",
           "readings": [
-            { "title": "Measuring Massive Multitask Language Understanding (MMLU)", "author": "Hendrycks et al. (2021)" },
-            { "title": "Holistic Evaluation of Language Models (HELM)", "author": "Liang et al. (2022)" },
-            { "title": "Judging LLM-as-a-Judge with MT-Bench", "author": "Zheng et al. (2023)" },
-            { "title": "On the Measure of Intelligence", "author": "Chollet (2019)", "note": "Critical Theory" }
+            { "title": "HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal", "author": "Hendrycks et al. (2024)", "url": "https://arxiv.org/abs/2402.04249" },
+            { "title": "Holistic Evaluation of Language Models (HELM) pages 1-10", "author": "Liang et al. (2022)", "url": "https://arxiv.org/abs/2211.09110" },
+            { "title": "An Empirical Study of LLM-as-a-Judge: How Design Choices Impact Evaluation Reliability", "author": "Yamauchi et al. (2025)", "url": "https://arxiv.org/abs/2506.13639" }
           ]
         }
       ]
