@@ -427,7 +427,7 @@
             let courseData = DEFAULT_DATA;
             
             try {
-                const response = await fetch('./syllabus.json');
+                const response = await fetch('./syllabus.json',{ cache: 'reload' });
                 if (response.ok) {
                     console.log("got file")
                     const json = await response.json();
