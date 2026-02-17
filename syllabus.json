@@ -94,18 +94,18 @@
       "theme": "reasoning",
       "weeks": [
         {
-          "week": 4,
-          "topic": "2/16 Chain-of-Thought & Prompt Engineering",
+          "week": 5,
+          "topic": "2/23 Chain-of-Thought & Prompt Engineering",
           "desc": "Eliciting reasoning through intermediate computation steps.",
           "readings": [
-            { "title": "Chain-of-Thought Prompting Elicits Reasoning", "author": "Wei et al. (2022)" },
-            { "title": "Self-Consistency Improves Chain of Thought", "author": "Wang et al. (2022)" },
-            { "title": "Large Language Models are Zero-Shot Reasoners", "author": "Kojima et al. (2022)" }
+            { "title": "Chain-of-Thought Prompting Elicits Reasoning", "author": "Wei et al. (2022)", "url": "https://proceedings.neurips.cc/paper_files/paper/2022/file/9d5609613524ecf4f15af0f7b31abca4-Paper-Conference.pdf" },
+            { "title": "Self-Consistency Improves Chain of Thought", "author": "Wang et al. (2022)", "url": "https://openreview.net/pdf?id=1PL1NIMMrw" },
+            { "title": "Measuring Faithfulness in Chain-of-Thought Reasoning", "author": "Lanham et al. (2023)", "url": "https://www-cdn.anthropic.com/827afa7dd36e4afbb1a49c735bfbb2c69749756e/measuring-faithfulness-in-chain-of-thought-reasoning.pdf" }
           ]
         },
         {
-          "week": 5,
-          "topic": "2/23 Advanced Reasoning Structures",
+          "week": 6,
+          "topic": "3/2 Advanced Reasoning Structures",
           "desc": "Non-linear exploration of solution spaces: Trees and Graphs.",
           "readings": [
             { "title": "Tree of Thoughts: Deliberate Problem Solving", "author": "Yao et al. (2023)" },
