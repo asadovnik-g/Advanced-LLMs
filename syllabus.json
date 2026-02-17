@@ -95,7 +95,7 @@
       "weeks": [
         {
           "week": 5,
-          "topic": "2/23 Chain-of-Thought & Prompt Engineering",
+          "topic": "2/23 Chain-of-Thought Reasoning",
           "desc": "Eliciting reasoning through intermediate computation steps.",
           "readings": [
             { "title": "Chain-of-Thought Prompting Elicits Reasoning", "author": "Wei et al. (2022)", "url": "https://proceedings.neurips.cc/paper_files/paper/2022/file/9d5609613524ecf4f15af0f7b31abca4-Paper-Conference.pdf" },
