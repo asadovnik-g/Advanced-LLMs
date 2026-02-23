@@ -108,13 +108,14 @@
           "topic": "3/2 Advanced Reasoning Structures",
           "desc": "Non-linear exploration of solution spaces: Trees and Graphs.",
           "readings": [
-            { "title": "Tree of Thoughts: Deliberate Problem Solving", "author": "Yao et al. (2023)" },
-            { "title": "Graph of Thoughts: Solving Elaborate Problems", "author": "Besta et al. (2023)" }
+            { "title": "Tree of Thoughts: Deliberate Problem Solving", "author": "Yao et al. (2023)" ,"url": "https://arxiv.org/pdf/2305.10601"},
+            { "title": "Graph of Thoughts: Solving Elaborate Problems", "author": "Besta et al. (2023)","url": "https://arxiv.org/abs/2308.09687" },
+            { "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning", "author": "DeepSeek-AI (2005)", "url": "https://arxiv.org/pdf/2501.12948"}
           ]
         },
         {
-          "week": 6,
-          "topic": "3/2 Self-Correction & Recursion",
+          "week": 7,
+          "topic": "3/9 Self-Correction & Recursion",
           "desc": "Can models fix their own mistakes? The limits of verification.",
           "readings": [
             { "title": "Large Language Models Can Self-Improve", "author": "Huang et al. (2022)" },
